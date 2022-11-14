@@ -1,0 +1,41 @@
+::-webkit-scrollbar {
+    display: none;
+  }
+
+  body{
+    background: rgb(69, 69, 69);
+  }
+
+  .mybox{
+    border-radius: 5px;
+    margin: 15px 0px;
+  }
+  .mybox:hover {
+    transform: scaleY(1);
+    box-shadow: 5px 5px 20px black;
+  }
+
+  .showimg{
+    box-shadow: 0px 0px 15px 5px rgb(34, 34, 34);
+  }
+
+  .showdiv{
+    box-shadow: 0px 0px 15px 1px rgb(158, 156, 156);
+  }
+
+  .textshadow{
+    text-shadow: 1.5px 1.5px black;
+  }
+
+  .imgsize{
+    height: 250px;
+  }
+
+  .bgimg{
+    /* background-repeat: no-repeat; */
+    background-image: url('./components/milky-way-2695569__480.jpg');
+  }
+  
+  .mainbgimg{
+    background-image: url('./components/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg');
+  }
