@@ -19,7 +19,6 @@ const Search = () => {
     byslugFunc()
     // eslint-disable-next-line
   }, [query])
-
   return (
     <div className='fluid-container mb-5'>
       <h1 className='fs-1 text-center mt-20 mb-5 fw-bold text-light'>News App - Top News Headlines </h1>
@@ -36,5 +35,4 @@ const Search = () => {
     </div>
   );
 };
-
 export default Search;

@@ -7,10 +7,8 @@ const News = (props) => {
         articles: undefined,
         loading: false,
     })
-
     const [totalResults, setTotalResults] = useState()
     const [haseMore, setHaseMore] = useState(true)
-
     const updateNews = async () => {
         props.setProgress(10)
         let headlines = `https://top-news-backend.onrender.com/api/headlines?populate=*&pagination[limit]=3`
@@ -21,30 +19,29 @@ const News = (props) => {
         setPost({ articles: parsedata.data });
         props.setProgress(100)
     }
-
+    const fetchMoreData =  async () => {
+        props.setProgress(10)
+        let headlines = `https://top-news-backend.onrender.com/api/headlines?populate=*&pagination[start]=${post.articles.length}&pagination[limit]=3`
+        let data = await fetch(headlines);
+        let parsedata = await data.json();
+        setPost({ articles: post.articles.concat(parsedata.data) });
+        props.setProgress(30)
+    }
     const totalPageFunc = async  ( ) => { 
+        props.setProgress(70)
         let total = await fetch(`https://top-news-backend.onrender.com/api/headlines`);
         let totalPage = await total.json();
         setTotalResults( totalPage.meta.pagination.total)
      }
-
     setTimeout(() => {
+        props.setProgress(100)
         setHaseMore(totalResults > (post.articles !== undefined &&  post.articles.length) ? true: false)
        }, 1000);
-
     useEffect(() => {
         updateNews()
          totalPageFunc()
         // eslint-disable-next-line
     }, [])
-
-    const fetchMoreData =  async () => {
-        let headlines = `https://top-news-backend.onrender.com/api/headlines?populate=*&pagination[start]=${post.articles.length}&pagination[limit]=3`
-        let data = await fetch(headlines);
-        let parsedata = await data.json();
-        setPost({ articles: post.articles.concat(parsedata.data) });
-    }
-
     return (
         <>
             <div className='fluid-container mb-5'>

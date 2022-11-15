@@ -2,14 +2,15 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Loading from "./Loading";
-const ReadMore = () => {
+
+const ReadMore = (props) => {
   const API_URL = `https://top-news-backend.onrender.com`;
   const params = useParams();
   const { slug } = params;
   const [slugData, setSlugData] = useState(null);
   const [handlepage, setHandlepage] = useState(null)
   const byslugFunc = async () => {
+    props.setProgress(70)
     const hedlines = await fetch(
       `${API_URL}/api/headlines?filters[slug][$contains]=${slug}&populate=*`
     );
@@ -19,6 +20,7 @@ const ReadMore = () => {
       setSlugData(hedlineData);
       const api = await fetch(`${API_URL}/api/headlines?populate=*`)
       const apiData = await api.json();
+      props.setProgress(100)
       setHandlepage(apiData.data)
     }
   }
@@ -34,7 +36,7 @@ const ReadMore = () => {
         }
       }  
     }
- 
+
   useEffect(() => {
     byslugFunc()
     // eslint-disable-next-line
@@ -51,7 +53,7 @@ const ReadMore = () => {
               <img src={`${slugData.data[0].attributes.image.data.attributes.formats.small.url}`} className="rounded-md mt-8 mx-auto w-full showimg" alt="" />
               <p className="mt-3 text-lg justify text-justify textshadow">{slugData.data[0].attributes.description}</p>
               <p className="mb-3 textshadow"> By {slugData.data[0].attributes.author} On {slugData.data[0].attributes.publishedAt}</p>
-            </div>) : (<Loading />)}
+            </div>) : ""}
         </div>
       </div>
       <div className="flex justify-around py-3">

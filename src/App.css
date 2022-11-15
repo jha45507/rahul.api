@@ -34,6 +34,7 @@
   .bgimg{
     /* background-repeat: no-repeat; */
     background-image: url('./components/milky-way-2695569__480.jpg');
+    height: 1000px;
   }
   
   .mainbgimg{
