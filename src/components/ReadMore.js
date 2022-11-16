@@ -46,7 +46,7 @@ const ReadMore = (props) => {
   return (
     <div className="mainbgimg">
       <div className="flex justify-center">
-        <div className='mt-20 showdiv sm:w-3/4 sm:mx-6 flex justify-center rounded-2xl bgimg mx-2 px-2'>
+        <div className='mt-20 showdiv sm:w-3/4 sm:mx-6 flex justify-center rounded-2xl bgimg mx-2 px-2 w-full'>
           {slugData !== null ? (
             <div className="text-light sm:w-2/4 text-center mt-3">
               <h1 className="fs-1 underline underline-offset-8">{slugData.data[0].attributes.title}</h1>
