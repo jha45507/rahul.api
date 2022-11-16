@@ -46,14 +46,14 @@ const ReadMore = (props) => {
   return (
     <div className="mainbgimg">
       <div className="flex justify-center">
-        <div className='mt-20 showdiv sm:w-3/4 sm:mx-6 flex justify-center rounded-2xl bgimg'>
+        <div className='mt-20 showdiv sm:w-3/4 sm:mx-6 flex justify-center rounded-2xl bgimg mx-2 px-2'>
           {slugData !== null ? (
             <div className="text-light sm:w-2/4 text-center mt-3">
               <h1 className="fs-1 underline underline-offset-8">{slugData.data[0].attributes.title}</h1>
               <img src={`${slugData.data[0].attributes.image.data.attributes.formats.small.url}`} className="rounded-md mt-8 mx-auto w-full showimg" alt="" />
               <p className="mt-3 text-lg justify text-justify textshadow">{slugData.data[0].attributes.description}</p>
               <p className="mb-3 textshadow"> By {slugData.data[0].attributes.author} On {slugData.data[0].attributes.publishedAt}</p>
-            </div>) : ""}
+            </div>) : " "}
         </div>
       </div>
       <div className="flex justify-around py-3">
